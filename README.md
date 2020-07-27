@@ -88,7 +88,7 @@ python receive.py
 
 ### Monitoring
 
-- Run rabbitmq_monitoring.py
+- Run [rabbitmq-monitoring.py](RabbitMQ-Code/rabbitmq-monitoring.py)
 ```bash
 python rabbitmq-monitoring.py
 ```
