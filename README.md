@@ -103,3 +103,173 @@ python rabbitmq-monitoring.py
     + No.of messages : ready, unacknowledged and total
     + Rate: incoming/publish
 - Every 5 seconds the monitoring output is updated
+
+[KAFKA](https://kafka.apache.org/)
+
+
+**INTRODUCTION**
+
+**Apache Kafka** is a distributed streaming platform.
+
+A streaming platform has **three key capabilities ** :
+
+1.	Publish and subscribe to streams of records, similar to a message queue or enterprise messaging system.
+2.	Store streams of records in a fault-tolerant durable way.
+3.	Process streams of records as they occur.
+
+Kafka runs as a cluster on one or more servers that can span multiple datacenters.The Kafka cluster stores streams of records in categories called topics.Each record consists of a key, a value, and a timestamp.
+
+Kafka is generally used for two broad classes of applications:
+
+1.	Building real-time streaming data pipelines that reliably get data between systems or applications.
+2.	Building real-time streaming applications that transform or react to the streams of data.
+
+Kafka has **five core APIs **:
+
+1.	The [Producer API](https://kafka.apache.org/documentation/#api) allows an application to publish a stream of records to one or more Kafka topics.
+2.	The [Consumer API](https://kafka.apache.org/documentation/#api) allows an application to subscribe to one or more topics and process the stream of records produced to them.
+3.	The [Streams API](https://kafka.apache.org/documentation/#api) allows an application to act as a stream processor, consuming an input stream from one or more topics and producing an output stream to one or more output topics, effectively transforming the input streams to output streams.
+4.	The [Connector API](https://kafka.apache.org/documentation/#api) allows building and running reusable producers or consumers that connect Kafka topics to existing applications or data systems. For example, a connector to a relational database might capture every change to a table.
+5.	The [Admin API](https://kafka.apache.org/documentation/#api) allows managing and inspecting topics, brokers and other Kafka objects.
+
+In Kafka the communication between the clients and the servers is done with a simple, high-performance, language agnostic TCP protocol. This protocol is versioned and maintains backwards compatibility with older versions.
+
+
+
+
+
+
+
+
+
+**INSTALLATION STEPS :**
+
+[Installation]()
+
+1. **Verifying Java Installation**
+	java –version
+
+2. **Install Zookeeper Framework**
+To [install ZooKeeper](http://zookeeper.apache.org/releases.html) framework on your machine, visit the following link and download the latest version of ZooKeeper.
+
+As of now, latest version of ZooKeeper is 3.4.6 (ZooKeeper-3.4.6.tar.gz).
+Open terminal on ubuntu :
+```bash
+tar -zxf zookeeper-3.4.6.tar.gz
+cd zookeeper-3.4.6
+```
+
+
+
+3.**Install Apache Kafka** 
+Visit the official and download the latest version and then extract it on terminal 
+
+tar -zxf kafka_2.11.0.9.0.0 tar.gz
+cd folder_name
+
+ **START** 
+
+1. New terminal
+
+cd zookeeper
+
+start zookeeper :
+```bash
+bin/zkServer.sh start
+bin/zkCli.sh
+```
+
+![Zookeeper](Images/Zookeeper.png)
+
+To stop zookeeper :  bin/zkServer.sh stop
+
+2. New terminal
+
+cd kafka
+
+Start kafka :
+```bash
+bin/kafka-server-start.sh config/server.properties
+```
+
+![Kafka](Images/kafka.png)
+
+To stop kafka : 
+```bash
+bin/kafka-server-stop.sh config/server.properties
+```
+
+3.New terminal 
+
+cd kafka
+
+**CREATING A KAFKA TOPIC**
+```bash
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1   
+--partitions 1 --topic Hello-Kafka
+```
+
+
+IF trying to send messages through terminal :
+
+START PRODUCER TO SEND MESSAGES
+
+```bash
+bin/kafka-console-producer.sh --broker-list localhost:9092 --topic Hello-Kafka
+//start typing messages on terminal
+```
+//type messages 
+
+
+START CONSUMER TO RECEIVE MESSAGES
+```bash
+bin/kafka-console-consumer.sh --zookeeper localhost:2181 —topic Hello-Kafka 
+--from-beginning
+```
+
+//you will see messages on this terminal
+
+### WITH PYTHON CLIENT :
+
+**Install Python-kafka** : 
+
+```bash
+pip install kafka- python
+```
+
+Keep apache kafka and zookeeper running in background
+Run consumer.py and producer.py on the new terminals
+
+
+#### Code
+
+A producer (sender) that sends a  message, and a consumer (receiver) that receives messages and prints them out.
+
+You can find the code [here](Kafka-Code)
+
+[Kafka-Python](https://kafka-python.readthedocs.io/en/master/apidoc/modules.html)
+    
+```bash
+python consumer.py
+python producer.py
+```
+
+#### Monitoring 
+
+It can be done by metric function when called in the program.
+
+[Prodcuer Metrics](https://kafka.apache.org/documentation/#producer_sender_monitoring): 
+
+![Producer Metrics](Images/Producer.png)
+
+[Consumer Metrics](https://kafka.apache.org/documentation/#consumer_monitoring): 
+
+![Consumer Metrics](Images/Consumer.png)
+
+
+**Difference between Kafka RabbitMQ ActiveMQ : **
+
+REFERENCE::  https://stackshare.io/stackups/activemq-vs-kafka-vs-rabbitmq
+
+
+
