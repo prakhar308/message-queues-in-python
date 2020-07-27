@@ -245,7 +245,7 @@ Run consumer.py and producer.py on the new terminals
 
 A producer (sender) that sends a  message, and a consumer (receiver) that receives messages and prints them out.
 
-You can find the code [here](Kafka-Code)
+You can find the code [here](Kafka)
 
 [Kafka-Python](https://kafka-python.readthedocs.io/en/master/apidoc/modules.html)
     
