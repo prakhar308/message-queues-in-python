@@ -267,9 +267,64 @@ It can be done by metric function when called in the program.
 ![Consumer Metrics](Images/Consumer.png)
 
 
+
+
+[ACTIVEMQ](https://activemq.apache.org/)
+--------
+
+**INTRODUCTION**
+
+**Apache ActiveMQ** is open source, multi-protocol, Java-based messaging server.It has 2 messaging broker servers named as ActiveMQ 5 Classic and ActiveMQ Artemis.
+Here we have used ActiveMQ 5 Classic.
+
+It is mostly used for send messages between different applications.It has own JMS-Api to send, receive,acknowledge for messsage between server and client.JMS provides Java based connectivity to server.For connectiing server with other languages diffrent protocols are used externally.
+
+**Connectivity**
+ ActiveMQ provides a wide range of connectivity options, including support for protocols such as HTTP/S, IP multicast, SSL, STOMP, TCP, UDP, XMPP, and more. Support for such a wide range of protocols equates to more flexibility. Many existing systems utilize a particular protocol and don’t have the option to change, so a messaging platform that supports many protocols lowers the barrier to adoption.
+
+For Python Connectivity Stomp protocol is used to message and acknowledge server. 
+
+
+
+**INSTALLATION STEPS :**
+
+1.	**Installing ActiveMQ Server**
+
+	1.	Download Apache ActiveMQ Classic from [here](https://activemq.apache.org/components/classic/download/).
+	2.	Open command prompt in C:\Program Files\active mq\apache-activemq-5.16.0\bin
+	3.	Run this command to start server
+		```bash
+		activemq start
+		```
+		![ActiveMq-server](Images/activemq-server.png)
+		
+		
+3. 	**Installing Client Connectivity protocol Library stomp.py**
+	```bash
+		pip install stomp.py
+	```
+
+
+
+#### Code
+
+A publisher (sender) that sends a  message, and a listner (receiver) that receives messages and prints them out.
+At first run Listener and then run publisher in seperate command prompt. 
+
+```bash
+python publisher.py
+python listener.py
+```
+### Monitoring 
+For monitoring ActiveMQ server provides its own web application.It is started along with the message server at local host.
+Here is snap of it.
+
+
+![ActiveMQ-monitoring](Images/activemq-monitoring.png)
+
+
+
+
 **Difference between Kafka RabbitMQ ActiveMQ : **
 
 REFERENCE::  https://stackshare.io/stackups/activemq-vs-kafka-vs-rabbitmq
-
-
-
