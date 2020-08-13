@@ -3,11 +3,38 @@
 Table of Contents
 -----------------
 
+- [Synchronous Request Response Model](#Synchronous-Request-Response-Model)
+- [Asynchronous Publish Subscribe Model](#Asynchronous-Publish-Subscribe-Model)
 - [What are Message Queues](#What-are-Message-Queues)
 - Different Message Queues:
     + [RabbitMQ](#RabbitMQ)
     + [Kafka](#Kafka)
     + [ActiveMQ](#ActiveMQ)
+
+
+Synchronous Request Response Model
+---------
+
+![Synchronous Request Response Model](Images/sync-req-res.png)
+The client makes a request to the API and has to wait for the response until all the processing has been completed.
+
+#### Disadvantages
+- If the task is **time consuming** and if the API also performs another task like sending an **email** then the client has to wait for a longer time.
+- The task and email will be **coupled** even when they can be performed separately.
+
+Asynchronous Publish Subscribe Model
+----------
+
+![Asynchronous Publish Subscribe Model](Images/async-message-queue.png)
+
+Inorder to overcome the disadvantages of Synchronous Request Response Model we do the following:
+
+- Add two more applications:
+   + one application will be responsible for the time consuming task.
+   + the other will be responsible for sending email. Thus we have **decoupled** the system.
+- Add two **message queues** each for the two applications **subscribed** to it.
+- Client will send request to the web app. The web app will validate the request and if everything is ok it will **publish** the message to both the queues and send and immediate 'OK' response to the client.
+- Thus the client won't have to wait and meanwhile the other two applications carry on **consuming** and processing the tasks of the queue.
 
 
 What are Message Queues
@@ -105,6 +132,7 @@ python rabbitmq-monitoring.py
 - Every 5 seconds the monitoring output is updated
 
 [KAFKA](https://kafka.apache.org/)
+---------
 
 
 **INTRODUCTION**
