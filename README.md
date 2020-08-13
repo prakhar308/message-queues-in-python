@@ -308,9 +308,25 @@ Here we have used ActiveMQ 5 Classic.
 It is mostly used for send messages between different applications.It has own JMS-Api to send, receive,acknowledge for messsage between server and client.JMS provides Java based connectivity to server.For connectiing server with other languages diffrent protocols are used externally.
 
 **Connectivity**
+
+
  ActiveMQ provides a wide range of connectivity options, including support for protocols such as HTTP/S, IP multicast, SSL, STOMP, TCP, UDP, XMPP, and more. Support for such a wide range of protocols equates to more flexibility. Many existing systems utilize a particular protocol and don’t have the option to change, so a messaging platform that supports many protocols lowers the barrier to adoption.
 
 For Python Connectivity Stomp protocol is used to message and acknowledge server. 
+
+
+**JMS Broker**
+
+There is a common misunderstanding that JMS messages are sent directly from one application to another.Between the sender and receiver (aka producers and consumers) is a broker – an application server – that receives messages from producers and sends messages to consumers. The producers and consumers are completely decoupled. In principle, the producer has no idea who is getting its messages and the consumer has no idea who is sending them.
+
+It’s the broker to which producers are sending the messages using a kind of address called a Topic or Queue. After receiving a message, the broker forwards the message to consumers who have subscribed to the Topic or Queue. Transactions with producers and consumers are transactions between the producer and the broker or between the broker and the consumers, but never between the producer and the consumer.
+
+**JMS Topic vs. Queues**
+
+With JMS you have the option of publishing messages to a Topic or Queue. There is a fundamental difference between the two which is illustrated below. A Topic forwards a message from the producer to many consumers at once. It’s a broadcast. This is often called Publish-and-Subscribe (Pub/Sub) messaging. A Queue may also have many consumers, but it forwards each message to only one consumer. The consumers wait in line, in a queue, taking turns getting new messages from the Queue. This often called Point-to-Point (P2P) messaging
+
+![pointtopoint](Images/point_to_point.png)
+
 
 
 
