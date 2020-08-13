@@ -10,6 +10,7 @@ Table of Contents
     + [RabbitMQ](#RabbitMQ)
     + [Kafka](#Kafka)
     + [ActiveMQ](#ActiveMQ)
+    + [IBM MQ](#IBM-MQ)
 
 
 Synchronous Request Response Model
@@ -368,7 +369,39 @@ Here is snap of it.
 
 
 
+[IBM MQ](https://developer.ibm.com/components/ibm-mq/)
+--------
 
-**Difference between Kafka RabbitMQ ActiveMQ : **
+IBM MQ is a robust, reliable, and secure messaging solution. IBM MQ enables applications to communicate and exchange data in a reliable and scalable way, that decouples one application from another.
 
-REFERENCE::  https://stackshare.io/stackups/activemq-vs-kafka-vs-rabbitmq
+### The Basics of IBM MQ
+
+**Messages** are packages of data that are produced and consumed by applications.
+
+**Queues** are addressable locations to deliver messages to and store them reliably until they need to be consumed.
+
+**Queue managers** are the MQ servers that host the queues.
+
+**Channels** are the way queue managers communicate with each other and with the applications.
+
+### Messaging Styles
+- Point-to-point messaging
+- Publish/subscribe messaging
+
+
+[Install IBM MQ](https://developer.ibm.com/articles/mq-downloads/)
+
+[PyMQI](https://dsuch.github.io/pymqi/) - python client fro IBM MQ
+
+Install
+```bash
+pip install pymqi
+```
+
+### Code
+
+A producer (sender) that sends a single message, and a consumer (receiver) that receives messages and prints them out. It's a "Hello World" of messaging.
+
+You can find the code [here](IBM_MQ-Code)
+
+
